@@ -5,7 +5,7 @@ import csv
 
 # Path to collect and output data
 bankcsv_path = os.path.join("Resources", "budget_data.csv")
-wpath = os.path.join("PyBank_Analysis,Budget_Analysis.txt")
+wpath = os.path.join("PyBank_Analysis/Budget_Analysis.txt")
 
 # Define varibles
 tmonths = 0
@@ -45,21 +45,33 @@ rev_avg = (sum(rev_chng_lt) / tmonths)
 
        
         
-print("Financial Analysis")
-print("---------------------")
-print(f"Total months:  {tmonths} ")
-print(f"Total: ${trev}")
-print(f"Average Change: ${rev_avg}")
-print(f"Greatest Increase in Profit: {grest_incr[0]} (${grest_incr[1]})")
-print(f"Greatest Decrease in Profits: {grest_decr[0]} (${grest_decr[1]})")      
+# print("Financial Analysis")
+# print("---------------------")
+# print(f"Total months:  {tmonths} ")
+# print(f"Total: ${trev}")
+# print(f"Average Change: ${rev_avg:.2f}")
+# print(f"Greatest Increase in Profit: {grest_incr[0]} (${grest_incr[1]})")
+# print(f"Greatest Decrease in Profits: {grest_decr[0]} (${grest_decr[1]})")      
 
 # write to file to folder
 with open(wpath, "w") as output:
+    Summary = (
+        f"\n\nFinalcial Analysis\n"
+        f"-----------------------\n"
+        f"Total months: {tmonths}\n"
+        f"Total: ${trev}\n"
+        f"Average Change: ${rev_avg:.2f}\n"
+        f"Greatest Increase in Profit: {grest_incr[0]} (${grest_incr[1]})\n"
+        f"Greatest Decrease in Profits: {grest_decr[0]} (${grest_decr[1]})\n")
+    #Print Results
+    print(Summary)
+    # Save results to file
+    output.write(Summary)
 
-    output.write("Financial Analysis")
-    output.write("---------------------")
-    output.write(f"Total months:  {tmonths} ")
-    output.write(f"Total: ${trev}")
-    output.write(f"Average Change: ${rev_avg}")
-    output.write(f"Greatest Increase in Profit: {grest_incr[0]} (${grest_incr[1]})")
-    output.write(f"Greatest Decrease in Profits: {grest_decr[0]} (${grest_decr[1]})") 
+    # output.write("Financial Analysis")
+    # output.write("---------------------")
+    # output.write(f"Total months:  {tmonths} ")
+    # output.write(f"Total: ${trev}")
+    # output.write(f"Average Change: ${rev_avg}")
+    # output.write(f"Greatest Increase in Profit: {grest_incr[0]} (${grest_incr[1]})")
+    # output.write(f"Greatest Decrease in Profits: {grest_decr[0]} (${grest_decr[1]})") 

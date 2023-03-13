@@ -15,6 +15,7 @@ rev_chng_lt = []
 grest_incr= ["", 0]
 grest_decr =["", 99999999999999999]
 trev = 0
+rev = []
 # Open Bank Data file and ingore the header row
 with open(bankcsv_path, 'r') as f:
     csv_reader =csv.reader(f,delimiter=",")
@@ -24,12 +25,13 @@ with open(bankcsv_path, 'r') as f:
 # Calcualte totals 
         tmonths = tmonths + 1
         trev = trev + int(row[1])
-
+        
 # Revenue Change
+    
         rev_chng = int(row[1]) - prev_rev
         prev_rev = int(row[1])
         rev_chng_lt = rev_chng_lt + [rev_chng]
-       # months = months + int(row[0])
+       
 #  # Greatest increase
         if rev_chng > grest_incr[1]:
             grest_incr[0] = row[0]
